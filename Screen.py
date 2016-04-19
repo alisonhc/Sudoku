@@ -1,5 +1,6 @@
 from graphics import*
 from Generation import*
+from Remove import*
 
 def main():
     win = GraphWin("Sudoku", 522, 522)
@@ -23,7 +24,9 @@ def main():
     for x in list3:
         x.setWidth(1)
         x.draw(win)
+
     def generateNums(grid):
+        print(grid)
         num = [[Text(Point(x, y), i) for (x, i) in zip((55, 106, 157, 211, 262, 313, 367, 418, 469), j)]
                for (y, j) in zip((55, 106, 157, 211, 262, 313, 367, 418, 469), grid)]
         for y in num:
@@ -33,7 +36,7 @@ def main():
                     x.setFace("arial")
                     x.draw(win)
 
-    generateNums(make_full_grid(3))
+    generateNums(remove_numbers(3, 1))
 
     win.getMouse()
     win.getMouse()
