@@ -23,10 +23,10 @@ def make_full_grid(num):  # cannot just have dimen at input; need to know num la
             # all(): return True if all elements in iterable are true (or if iterable is empty)
             # if n is not in row, column, or block
             if (n not in grid[curr_row] and all(row[curr_column] != n for row in grid)
-            and all(n not in row[c1:c1 + num] for row in grid[r1:r1+num])):
+            and all(n not in row[c1:c1 + num] for row in grid[r1:r1 + num])):
                 grid[curr_row][curr_column] = n  # put n into spot
                 if index + 1 >= dimen ** 2 or fill_grid(index + 1):  # if index has gone thru entire grid
-                    print('done')
+                    print('work')
                     return grid
         # okay i have the else thing here but you can try moving it around; who knows...
         # backtrack, resetting spot to None

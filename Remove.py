@@ -72,4 +72,4 @@ def lowerbound(difficulty):
         return 9
 
 
-print(remove_numbers(3, 1))
+print(remove_numbers(3, 2))

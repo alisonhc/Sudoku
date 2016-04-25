@@ -34,7 +34,7 @@ import random
       #     grid[curr_row][curr_column] = 0
        #    return 0
     return fill(0)"""
-
+count = 0
 
 def solve_grid(grid):
     dimen = len(grid)
@@ -47,18 +47,18 @@ def solve_grid(grid):
         # create list of numbers 1 through dimen. so in traditional Sudoku 1-9
         numbers = list(range(1, dimen + 1))
         random.shuffle(numbers)
-        for n in numbers:
-            if (grid[curr_row][curr_column] == 0) and (n not in grid[curr_row] and all(row[curr_column] != n for row in grid)
-            and all(n not in row[c1:c1 + num] for row in grid[r1:r1 + num])):
-                grid[curr_row][curr_column] = n
-                print('work')
+        if grid[curr_row][curr_column] == 0:
+            for n in numbers:
+                if (n not in grid[curr_row] and all(row[curr_column] != n for row in grid)
+                and all(n not in row[c1:c1 + num] for row in grid[r1:r1 + num])):
+                    grid[curr_row][curr_column] = n
+                    if index + 1 >= dimen ** 2 or fill(index + 1):
+                        return grid
+            grid[curr_row][curr_column] = 0
+            return None
+        else:
             if index + 1 >= dimen ** 2 or fill(index + 1):
-                print('f')
                 return grid
-
-        print('backtrack')
-        grid[curr_row][curr_column] = 0
-        return None
 
     return fill(0)
 
