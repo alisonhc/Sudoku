@@ -1,5 +1,4 @@
 from graphics import*
-from Generation import*
 from Remove import*
 
 def main():
