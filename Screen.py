@@ -1,5 +1,6 @@
 from graphics import*
 from Remove import*
+from Generation import*
 
 def main():
     win = GraphWin("Sudoku", 522, 522)
@@ -35,7 +36,7 @@ def main():
                     x.setFace("arial")
                     x.draw(win)
 
-    generateNums(remove_numbers(3, 1))
+    generateNums(make_full_grid(3))
 
     win.getMouse()
     win.getMouse()

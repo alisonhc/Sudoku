@@ -2,6 +2,7 @@ import copy
 import random
 import Generation
 
+
 def remove_numbers(num, difficulty):
     grid = Generation.make_full_grid(num)
     count = 0
@@ -26,10 +27,10 @@ def remove_numbers(num, difficulty):
                 if colcount <= lowerbound(difficulty) and rowcount <= lowerbound(difficulty):
                     grid = copy.copy(tempgrid)
                     count += 1
-                elif colcount <= lowerbound(difficulty):
+                if colcount > lowerbound(difficulty):
                     spots2.remove(rando2)
                     tempgrid = copy.copy(grid)
-                else:
+                if rowcount > lowerbound(difficulty):
                     spots.remove(rando)
                     tempgrid = copy.copy(grid)
 
