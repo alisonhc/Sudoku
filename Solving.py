@@ -3,39 +3,6 @@
 import math
 import random
 
-
-"""def solve_grid(grid):
-    dimen = len(grid)
-    num = int(math.sqrt(dimen))
-    # new_grid = [[None for _ in range(dimen)] for _ in range(dimen)]
-
-    def fill(index):
-        curr_row, curr_column = divmod(index, dimen)
-        r1, c1 = curr_row - (curr_row % 3), curr_column - (curr_column % 3)
-        numbers = list(range(1, dimen + 1))
-        random.shuffle(numbers)
-        for n in numbers: # it definitely enters this for loop
-            if index + 1 >= dimen ** 2:  # or fill(index + 1):
-                print('base case')
-                return grid
-            if (grid[curr_row][curr_column] == 0) and (n not in grid[curr_row] and all(row[curr_column] != n for row in grid)
-            and all(n not in row[c1:c1 + num] for row in grid[r1:curr_row])):
-                grid[curr_row][curr_column] = n
-                print('work')
-            f = fill(index+1)
-            if f == 0:
-                print('yo')
-                grid[curr_row][curr_column] = 0
-            else:
-                print('c')
-                return f
-
-      #  else:
-      #     grid[curr_row][curr_column] = 0
-       #    return 0
-    return fill(0)"""
-count = 0
-
 def solve_grid(grid):
     dimen = len(grid)
     num = int(math.sqrt(dimen))
