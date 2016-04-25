@@ -23,6 +23,7 @@ def max_remove(difficulty):
     if difficulty == 4:
         return 59
 
+
 def remove_numbers(num, difficulty):
     grid = Generation.make_full_grid(num)
     count = 0
