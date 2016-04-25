@@ -34,7 +34,7 @@ import random
       #     grid[curr_row][curr_column] = 0
        #    return 0
     return fill(0)"""
-
+count = 0
 
 def solve_grid(grid):
     dimen = len(grid)
@@ -47,18 +47,18 @@ def solve_grid(grid):
         # create list of numbers 1 through dimen. so in traditional Sudoku 1-9
         numbers = list(range(1, dimen + 1))
         random.shuffle(numbers)
-        for n in numbers:
-            if (grid[curr_row][curr_column] == 0) and (n not in grid[curr_row] and all(row[curr_column] != n for row in grid)
-            and all(n not in row[c1:c1 + num] for row in grid[r1:curr_row])):
-                grid[curr_row][curr_column] = n
-                print('work')
+        if grid[curr_row][curr_column] == 0:
+            for n in numbers:
+                if (n not in grid[curr_row] and all(row[curr_column] != n for row in grid)
+                and all(n not in row[c1:c1 + num] for row in grid[r1:r1 + num])):
+                    grid[curr_row][curr_column] = n
+                    if index + 1 >= dimen ** 2 or fill(index + 1):
+                        return grid
+            grid[curr_row][curr_column] = 0
+            return None
+        else:
             if index + 1 >= dimen ** 2 or fill(index + 1):
-                print('f')
                 return grid
-
-        print('backtrack')
-        grid[curr_row][curr_column] = 0
-        return None
 
     return fill(0)
 
@@ -69,7 +69,6 @@ def has_unique_solution():
 
 
 test = [[5, 6, 4, 9, 8, 3, 0, 0, 0], [9, 8, 1, 0, 2, 0, 0, 3, 4], [7, 0, 3, 1, 5, 0, 9, 8, 6], [3, 0, 6, 0, 7, 9, 0, 0, 0], [1, 4, 0, 5, 6, 0, 0, 0, 0], [2, 7, 0, 3, 4, 1, 8, 6, 5], [0, 0, 2, 0, 0, 0, 0, 5, 3], [0, 9, 0, 0, 0,5, 6, 0, 0], [8, 3, 0, 7, 0, 6, 4, 0, 9]]
-grid = [[None for _ in range(9)] for _ in range(9)]
 # print(test)
 print(solve_grid(test))
 # print(test)
