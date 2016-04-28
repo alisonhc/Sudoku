@@ -3,6 +3,7 @@
 import math
 import random
 
+#Solves the sudoku game
 def solve_grid(grid):
     dimen = len(grid)
     num = int(math.sqrt(dimen))
@@ -29,15 +30,8 @@ def solve_grid(grid):
 
     return fill(0)
 
-
-
-def has_unique_solution():
-    return True
-
-
 test = [[5, 6, 4, 9, 8, 3, 0, 0, 0], [9, 8, 1, 0, 2, 0, 0, 3, 4], [7, 0, 3, 1, 5, 0, 9, 8, 6], [3, 0, 6, 0, 7, 9, 0, 0, 0], [1, 4, 0, 5, 6, 0, 0, 0, 0], [2, 7, 0, 3, 4, 1, 8, 6, 5], [0, 0, 2, 0, 0, 0, 0, 5, 3], [0, 9, 0, 0, 0,5, 6, 0, 0], [8, 3, 0, 7, 0, 6, 4, 0, 9]]
-# print(test)
-print(solve_grid(test))
-# print(test)
+
+
 
 

@@ -2,6 +2,10 @@ import copy
 import random
 import Generation
 
+#Generates the holes in the sudoku board
+#Wrapper function
+def generate_sudoku(difficulty):
+    return remove_numbers(3, difficulty)
 
 def remove_numbers(num, difficulty):
     grid = Generation.make_full_grid(num)
@@ -82,6 +86,3 @@ def lowerbound(difficulty):
         return 7
     if difficulty == 4:
         return 9
-
-
-print(remove_numbers(3, 1))

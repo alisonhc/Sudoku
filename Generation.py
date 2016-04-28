@@ -1,6 +1,6 @@
 import random
 
-
+#Generates the full grid that we will later poke holes into
 def make_full_grid(num):  # cannot just have dimen at input; need to know num later in function
     """Return a random filled num**2 n num**2 Sudoku grid."""
     dimen = num ** 2
@@ -34,4 +34,3 @@ def make_full_grid(num):  # cannot just have dimen at input; need to know num la
 
     return fill_grid(0)
 
-print(make_full_grid(3))

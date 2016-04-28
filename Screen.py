@@ -1,8 +1,10 @@
 from graphics import*
 from Remove import*
+from RecursiveRemove import*
 from Generation import*
 
-def main():
+#Creates the visualization of Sudoku board
+def main(grid):
     win = GraphWin("Sudoku", 522, 522)
     win.setBackground('OliveDrab3')
     rect = Rectangle(Point(29, 29), Point(497, 497))
@@ -35,10 +37,9 @@ def main():
                     x.setFace("arial")
                     x.draw(win)
 
-    generateNums(remove_numbers(3, 1))
+    generateNums(grid)
 
     win.getMouse()
     win.getMouse()
     win.close()
 
-main()
