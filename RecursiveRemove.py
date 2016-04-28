@@ -12,7 +12,7 @@ def rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs
     if count == additions:
         return grid
     else:
-        while only_zero_spots(grid, spotsr, spotsc):
+        while only_zero_spots(grid, spotsr, spotsc, pairs):
             randor = random.choice(spotsr)
             randoc = random.choice(spotsc)
             if grid[randor][randoc] is not 0 and pair_check(pairs, randor, randoc):
@@ -28,14 +28,16 @@ def rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs
                     grid[randor][randoc] = removed_num
                     count -= 1
                 else:
-                    tempgrid = rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs)
+
+                    tempgrid = rec_remove_numbers(copy.deepcopy(grid), additions, count, lowerbound, copy.deepcopy(spotsr), copy.deepcopy(spotsc), copy.deepcopy(pairs))
                     if tempgrid is None:
                         print("try again")
                         grid[randor][randoc] = removed_num
                         pairs.append([randor, randoc])
+                        randor = None
+                        randoc = None
                         count -= 1
                     else:
-                        print("work")
                         return tempgrid
         print("backtrack")
         return None
@@ -47,12 +49,13 @@ def pair_check(pairs, randor, randoc):
             pair = False
     return pair
 
-def only_zero_spots(grid, spotsr, spotsc):
+def only_zero_spots(grid, spotsr, spotsc, pairs):
     zero_count = False
     for r in spotsr:
         for c in spotsc:
             if grid[r][c] is not 0:
-                zero_count = True
+                if pair_check(pairs, r, c):
+                    zero_count = True
 
     return zero_count
 
