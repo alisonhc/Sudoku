@@ -3,7 +3,7 @@
 import math
 import random
 
-#Solves the sudoku game
+# Solves the sudoku game
 def solve_grid(grid):
     dimen = len(grid)
     num = int(math.sqrt(dimen))
