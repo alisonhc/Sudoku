@@ -31,9 +31,14 @@ def constraint_solve(grid):
 
 # EDIT TO TAKE ARRAY INSTEAD OF STRING
 def grid_values(grid):
+    vals = ''
+    for x in range(0, 9):
+        for y in range(0, 9):
+            i = grid[x][y]
+            vals += str(i)
     """Convert grid into a dict of {tile: number} with '0' for empty spots"""
     # {'I1': '0', 'E5': '0', 'B9': '1', 'H6': '3',...}
-    puzzle = [c for c in grid if c in digits or c in '0']
+    puzzle = [c for c in vals if c in digits or c in '0']
     return dict(zip(tiles, puzzle))
 
 
@@ -80,14 +85,21 @@ def display(values):
                        for c in columns))
         if r in 'CF': print(line)
     print
-
+def display2(values):
+    solvedgrid = [[None for _ in range(9)] for _ in range(9)]
+    count = 0
+    for x in 'ABCDEFGHI':
+        for y in range(1, 10):
+            solvedgrid[count][y-1] = values[x+str(y)]
+        count += 1
+    return solvedgrid
 test = [[5, 6, 4, 9, 8, 3, 0, 0, 0], [9, 8, 1, 0, 2, 0, 0, 3, 4], [7, 0, 3, 1, 5, 0, 9, 8, 6], [3, 0, 6, 0, 7, 9, 0, 0, 0], [1, 4, 0, 5, 6, 0, 0, 0, 0], [2, 7, 0, 3, 4, 1, 8, 6, 5], [0, 0, 2, 0, 0, 0, 0, 5, 3], [0, 9, 0, 0, 0,5, 6, 0, 0], [8, 3, 0, 7, 0, 6, 4, 0, 9]]
-
 # FOUND THIS EXAMPLE ONLINE FOR TESTING PURPOSES. Mark you can hook it up
 grid1 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300'
+test2 = [[0,0,3,0,2,0,6,0,0],[9,0,0,3,0,5,0,0,1],[0,0,1,8,0,6,4,0,0],[0,0,8,1,0,2,9,0,0],[7,0,0,0,0,0,0,0,8],[0,0,6,7,0,8,2,0,0],[0,0,2,6,0,9,5,0,0],[8,0,0,2,0,3,0,0,9],[0,0,5,0,1,0,3,0,0]]
+'0030206090030500001806400081029070000000006708200026095080020300'
 
-
-display(constraint_solve(grid1))
+display2(constraint_solve(test))
 """def back_to_array(solved):
     array = [[None for _ in range(9)] for _ in range(9)]
     for r in rows:"""

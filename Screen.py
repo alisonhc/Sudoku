@@ -2,6 +2,7 @@ from graphics import*
 from Remove import*
 from RecursiveRemove import*
 from Generation import*
+from SolveConstraintPropagation import*
 
 #Creates the visualization of Sudoku board
 def main(grid):
@@ -38,7 +39,6 @@ def main(grid):
                     x.draw(win)
 
     generateNums(grid)
-
     win.getMouse()
     win.getMouse()
     win.close()
