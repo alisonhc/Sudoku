@@ -31,7 +31,6 @@ def rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs
 
                     tempgrid = rec_remove_numbers(copy.deepcopy(grid), additions, count, lowerbound, copy.deepcopy(spotsr), copy.deepcopy(spotsc), copy.deepcopy(pairs))
                     if tempgrid is None:
-                        print("try again")
                         grid[randor][randoc] = removed_num
                         pairs.append([randor, randoc])
                         randor = None
@@ -39,7 +38,6 @@ def rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs
                         count -= 1
                     else:
                         return tempgrid
-        print("backtrack")
         return None
 
 def pair_check(pairs, randor, randoc):
@@ -101,5 +99,5 @@ def lowerbound(difficulty):
     if difficulty == 4:
         return 9
 
+test = [[7, 5, 1, 8, 9, 4, 2, 6, 3], [3, 4, 6, 7, 1, 2, 8, 5, 9], [2, 8, 9, 6, 3, 5, 4, 1, 7], [5, 7, 4, 9, 6, 8, 3, 2, 1], [6, 9, 8, 1, 2, 3, 5, 7, 4], [1, 3, 2, 5, 4, 7, 9, 8, 6], [4, 2, 5, 3, 7, 6, 1, 9, 8], [9, 6, 3, 2, 8, 1, 7, 4, 5], [8, 1, 7, 4, 5, 9, 6, 3, 2]]
 
-print(rec_generate_sudoku(1))

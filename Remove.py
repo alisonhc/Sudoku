@@ -5,10 +5,9 @@ import Generation
 #Generates the holes in the sudoku board
 #Wrapper function
 def generate_sudoku(difficulty):
-    return remove_numbers(3, difficulty)
+    return remove_numbers(Generation.make_full_grid(3), difficulty)
 
-def remove_numbers(num, difficulty):
-    grid = Generation.make_full_grid(num)
+def remove_numbers(grid, difficulty):
     count = 0
     additions = random.randint(min_remove(difficulty), max_remove(difficulty))
     spotsr = [x for x in range(0, 9)]

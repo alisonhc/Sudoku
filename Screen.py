@@ -7,7 +7,7 @@ from SolveConstraintPropagation import*
 #Creates the visualization of Sudoku board
 def main(grid):
     win = GraphWin("Sudoku", 522, 522)
-    win.setBackground('OliveDrab3')
+    win.setBackground('MistyRose')
     rect = Rectangle(Point(29, 29), Point(497, 497))
     rect.setWidth(4)
     rect.draw(win)
