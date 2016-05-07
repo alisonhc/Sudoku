@@ -1,12 +1,16 @@
 import copy
 import random
 import Generation
-#This class generates the holes in the Sudoku with recursion
-#wrapper function
+
+# This file generates the holes in the Sudoku with recursion
+# wrapper function
+
+
 def rec_generate_sudoku(difficulty):
     grid = Generation.make_full_grid(3)
     additions = random.randint(min_remove(difficulty), max_remove(difficulty))
     return rec_remove_numbers(grid, additions, 0, lowerbound(difficulty), [x for x in range(0, 9)], [x for x in range(0, 9)], [])
+
 
 def rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs):
     if count == additions:
@@ -40,12 +44,14 @@ def rec_remove_numbers(grid, additions, count, lowerbound, spotsr, spotsc, pairs
                         return tempgrid
         return None
 
+
 def pair_check(pairs, randor, randoc):
     pair = True
     for r, c in pairs:
         if r == randor and c == randoc:
             pair = False
     return pair
+
 
 def only_zero_spots(grid, spotsr, spotsc, pairs):
     zero_count = False
@@ -69,6 +75,7 @@ def col_and_row_counts(grid, row, col):
             col_count += 1
     return row_count, col_count
 
+
 def min_remove(difficulty):
     if difficulty == 1:
         return 32
@@ -79,6 +86,7 @@ def min_remove(difficulty):
     if difficulty == 4:
         return 54
 
+
 def max_remove(difficulty):
     if difficulty == 1:
         return 45
@@ -88,6 +96,7 @@ def max_remove(difficulty):
         return 53
     if difficulty == 4:
         return 59
+
 
 def lowerbound(difficulty):
     if difficulty == 1:

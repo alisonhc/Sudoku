@@ -2,10 +2,13 @@ import copy
 import random
 import Generation
 
-#Generates the holes in the sudoku board
-#Wrapper function
+# Generates the holes in the Sudoku board
+# Wrapper function
+
+
 def generate_sudoku(difficulty):
     return remove_numbers(Generation.make_full_grid(3), difficulty)
+
 
 def remove_numbers(grid, difficulty):
     count = 0
@@ -38,8 +41,8 @@ def remove_numbers(grid, difficulty):
             if zero_count:
                 count = additions
 
-
     return grid
+
 
 def col_and_row_counts(grid, row, col):
     col_count = 0
@@ -52,8 +55,11 @@ def col_and_row_counts(grid, row, col):
             col_count += 1
     return row_count, col_count
 
+
+# did not get to finishing this one
 def is_solvable(grid):
     return True
+
 
 def min_remove(difficulty):
     if difficulty == 1:
@@ -75,6 +81,7 @@ def max_remove(difficulty):
         return 53
     if difficulty == 4:
         return 59
+
 
 def lowerbound(difficulty):
     if difficulty == 1:

@@ -1,11 +1,11 @@
-# code to fancilly solve sudoku
+# Code to solve Sudoku in a more human way
+
 
 # make [A1, A2, A3....]
 def cross(A, B):
     return [a+b for a in A for b in B]
 
 
-# SHOULD MAKE A WRAPPER FUNCTION FOR ALL THIS STUFF
 digits = '123456789'
 rows = 'ABCDEFGHI'
 columns = digits
@@ -29,7 +29,7 @@ def constraint_solve(grid):
     return possible_values
 
 
-# EDIT TO TAKE ARRAY INSTEAD OF STRING
+
 def grid_values(grid):
     vals = ''
     for x in range(0, 9):
@@ -68,23 +68,13 @@ def eliminate_possibilities(possible_vals, spot, num):
     for u in units[spot]:
         available_places = [s for s in u if num in possible_vals[s]]
         if len(available_places) == 0:
-            return False  # No place for this value?! no way
+            return False  # if there is no place for value
         elif len(available_places) == 1:
             if not assign(possible_vals, available_places[0], num):  # this recurses too, because assign calls eliminate
-                return False    # I LOOKED UP THIS IF STATEMENT HERE: did not think of it myself
+                return False
     return possible_vals
 
 
-# ALISON DID NOT WRITE THIS. SHE FOUND IT ONLINE FOR TESTING PURPOSES. we can remove it soon
-def display(values):
-    "Display these values as a 2-D grid."
-    width = 1+max(len(values[s]) for s in tiles)
-    line = '+'.join(['-'*(width*3)]*3)
-    for r in rows:
-        print (''.join(values[r+c].center(width) + ('|' if c in '36' else '')
-                       for c in columns))
-        if r in 'CF': print(line)
-    print
 def display2(values):
     solvedgrid = [[None for _ in range(9)] for _ in range(9)]
     count = 0
@@ -93,15 +83,9 @@ def display2(values):
             solvedgrid[count][y-1] = values[x+str(y)]
         count += 1
     return solvedgrid
+
 test = [[5, 6, 4, 9, 8, 3, 0, 0, 0], [9, 8, 1, 0, 2, 0, 0, 3, 4], [7, 0, 3, 1, 5, 0, 9, 8, 6], [3, 0, 6, 0, 7, 9, 0, 0, 0], [1, 4, 0, 5, 6, 0, 0, 0, 0], [2, 7, 0, 3, 4, 1, 8, 6, 5], [0, 0, 2, 0, 0, 0, 0, 5, 3], [0, 9, 0, 0, 0,5, 6, 0, 0], [8, 3, 0, 7, 0, 6, 4, 0, 9]]
-# FOUND THIS EXAMPLE ONLINE FOR TESTING PURPOSES. Mark you can hook it up
-grid1 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300'
-test2 = [[0,0,3,0,2,0,6,0,0],[9,0,0,3,0,5,0,0,1],[0,0,1,8,0,6,4,0,0],[0,0,8,1,0,2,9,0,0],[7,0,0,0,0,0,0,0,8],[0,0,6,7,0,8,2,0,0],[0,0,2,6,0,9,5,0,0],[8,0,0,2,0,3,0,0,9],[0,0,5,0,1,0,3,0,0]]
-'0030206090030500001806400081029070000000006708200026095080020300'
 
 display2(constraint_solve(test))
-"""def back_to_array(solved):
-    array = [[None for _ in range(9)] for _ in range(9)]
-    for r in rows:"""
 
 

@@ -4,7 +4,8 @@ from RecursiveRemove import*
 from Generation import*
 from SolveConstraintPropagation import*
 
-#Creates the visualization of Sudoku board
+
+# Creates the visualization of Sudoku board
 def main(grid):
     win = GraphWin("Sudoku", 522, 522)
     win.setBackground('MistyRose')
